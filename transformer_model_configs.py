@@ -149,11 +149,35 @@ def gpt3_config():
         "attention_type": "MHA"
     }
 
-def gpt4_estimate_config():
+def gpt4_8k_estimate_config():
     """GPT-4 (estimated) configuration."""
     return {
-        "vocab_size": 100000,
+        "vocab_size": 100256,
         "seq_length": 8192,
+        "embedding_dim": 25600,
+        "num_heads": 160,
+        "ffn_dim": 102400,
+        "num_layers": 120,
+        "attention_type": "MHA"
+    }
+
+def gpt4_32k_estimate_config():
+    """GPT-4 (estimated) configuration."""
+    return {
+        "vocab_size": 100256,
+        "seq_length": 32768,
+        "embedding_dim": 25600,
+        "num_heads": 160,
+        "ffn_dim": 102400,
+        "num_layers": 120,
+        "attention_type": "MHA"
+    }
+
+def gpt4o_128k_estimate_config():
+    """GPT-4o (estimated) configuration."""
+    return {
+        "vocab_size": 199997,
+        "seq_length": 128000,
         "embedding_dim": 25600,
         "num_heads": 160,
         "ffn_dim": 102400,
@@ -459,7 +483,9 @@ def all_configs():
         "GPT-3-6.7B": gpt3_6_7b_config(),
         "GPT-3-13B": gpt3_13b_config(),
         "GPT-3-175B": gpt3_config(),
-        "GPT-4 (est)": gpt4_estimate_config(),
+        "GPT-4 (8k est)": gpt4_8k_estimate_config(),
+        "GPT-4 (32k est)": gpt4_32k_estimate_config(),
+        "GPT-4o (est)": gpt4o_128k_estimate_config(),
         "LLaMA-2-7B": llama2_7b_config(),
         "LLaMA-2-13B": llama2_13b_config(),
         "LLaMA-2-70B": llama2_70b_config(),
