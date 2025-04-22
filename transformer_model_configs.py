@@ -137,7 +137,7 @@ def gpt3_13b_config():
         "attention_type": "MHA"
     }
 
-def gpt3_config():
+def gpt3_175b_config():
     """GPT-3 (175B) configuration. Renamed from original gpt3_config."""
     return {
         "vocab_size": 50257,
@@ -209,6 +209,19 @@ def llama2_13b_config():
         "attention_type": "MHA",
     }
 
+def llama2_34b_estimate_config():
+    """Llama 2 (34B) configuration."""
+    return {
+        "vocab_size": 32000,
+        "seq_length": 4096,
+        "embedding_dim": 7168,  # Estimated based on scaling patterns
+        "num_heads": 56,        # Estimated based on scaling patterns
+        "ffn_dim": 19200,       # Estimated based on scaling patterns  
+        "num_layers": 60,       # Estimated based on scaling patterns
+        "attention_type": "GQA",
+        "group_size": 8
+    }
+
 def llama2_70b_config():
     """Llama 2 (70B) configuration."""
     return {
@@ -222,8 +235,8 @@ def llama2_70b_config():
         "group_size": 8
     }
 
-def llama3_8b_config():
-    """Llama 3 (8B) configuration."""
+def llama3_8b_8k_config():
+    """Llama 3 (8B) 8k context configuration."""
     return {
         "vocab_size": 128000,
         "seq_length": 8192,
@@ -232,11 +245,11 @@ def llama3_8b_config():
         "ffn_dim": 14336,
         "num_layers": 32,
         "attention_type": "GQA",
-        "group_size": 4
+        "group_size": 8
     }
 
-def llama3_70b_config():
-    """Llama 3 (70B) configuration."""
+def llama3_70b_8k_config():
+    """Llama 3 (70B) 8k context configuration."""
     return {
         "vocab_size": 128000,
         "seq_length": 8192,
@@ -244,6 +257,58 @@ def llama3_70b_config():
         "num_heads": 64,
         "ffn_dim": 28672,
         "num_layers": 80,
+        "attention_type": "GQA",
+        "group_size": 8
+    }
+
+def llama3_405b_8k_config():
+    """Llama 3 (405B) 8k context configuration."""
+    return {
+        "vocab_size": 128000,
+        "seq_length": 8192,
+        "embedding_dim": 16384,
+        "num_heads": 128,
+        "ffn_dim": 53248,
+        "num_layers": 126,
+        "attention_type": "GQA",
+        "group_size": 8
+    }
+
+def llama3_8b_128k_config():
+    """Llama 3 (8B) 128k context configuration."""
+    return {
+        "vocab_size": 128000,
+        "seq_length": 128000,
+        "embedding_dim": 4096,
+        "num_heads": 32,
+        "ffn_dim": 14336,
+        "num_layers": 32,
+        "attention_type": "GQA",
+        "group_size": 8
+    }
+
+def llama3_70b_128k_config():
+    """Llama 3 (70B) 128k context configuration."""
+    return {
+        "vocab_size": 128000,
+        "seq_length": 128000,
+        "embedding_dim": 8192,
+        "num_heads": 64,
+        "ffn_dim": 28672,
+        "num_layers": 80,
+        "attention_type": "GQA",
+        "group_size": 8
+    }
+
+def llama3_405b_128k_config():
+    """Llama 3 (405B) 128k context configuration."""
+    return {
+        "vocab_size": 128000,
+        "seq_length": 128000,
+        "embedding_dim": 16384,
+        "num_heads": 128,
+        "ffn_dim": 53248,
+        "num_layers": 126,
         "attention_type": "GQA",
         "group_size": 8
     }
@@ -482,15 +547,20 @@ def all_configs():
         "GPT-3-2.7B": gpt3_2_7b_config(),
         "GPT-3-6.7B": gpt3_6_7b_config(),
         "GPT-3-13B": gpt3_13b_config(),
-        "GPT-3-175B": gpt3_config(),
+        "GPT-3-175B": gpt3_175b_config(),
         "GPT-4 (8k est)": gpt4_8k_estimate_config(),
         "GPT-4 (32k est)": gpt4_32k_estimate_config(),
         "GPT-4o (est)": gpt4o_128k_estimate_config(),
         "LLaMA-2-7B": llama2_7b_config(),
         "LLaMA-2-13B": llama2_13b_config(),
+        "LLaMA-2-34B (est)": llama2_34b_estimate_config(),
         "LLaMA-2-70B": llama2_70b_config(),
-        "LLaMA-3-8B": llama3_8b_config(),
-        "LLaMA-3-70B": llama3_70b_config(),
+        "LLaMA-3-8B-8k": llama3_8b_8k_config(),
+        "LLaMA-3-70B-8k": llama3_70b_8k_config(),
+        "LLaMA-3-405B-8k": llama3_405b_8k_config(),
+        "LLaMA-3-8B-128k": llama3_8b_128k_config(),
+        "LLaMA-3-70B-128k": llama3_70b_128k_config(),
+        "LLaMA-3-405B-128k": llama3_405b_128k_config(),
         "LLaMA-4-8B (est)": llama4_8b_config(),
         "LLaMA-4-70B (est)": llama4_70b_config(),
         "TinyLLaMA-1.1B": tinyllama_1_1b_config(),
