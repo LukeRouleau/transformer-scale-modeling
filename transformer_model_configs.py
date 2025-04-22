@@ -48,19 +48,103 @@ def gpt2_xl_config():
         "seq_length": 1024,
         "embedding_dim": 1600,
         "num_heads": 25,
-        "ffn_dim": 6400,
+        "ffn_dim": 6400,  # 4 * embedding_dim
         "num_layers": 48,
         "attention_type": "MHA"
     }
 
+def gpt3_small_config():
+    """GPT-3 Small (125M) configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 768,
+        "num_heads": 12,
+        "ffn_dim": 3072,  # 4 * embedding_dim
+        "num_layers": 12,
+        "attention_type": "MHA"
+    }
+
+def gpt3_medium_config():
+    """GPT-3 Medium (350M) configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 1024,
+        "num_heads": 16,
+        "ffn_dim": 4096,  # 4 * embedding_dim
+        "num_layers": 24,
+        "attention_type": "MHA"
+    }
+
+def gpt3_large_config():
+    """GPT-3 Large (760M) configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 1536,
+        "num_heads": 24,
+        "ffn_dim": 6144,  # 4 * embedding_dim
+        "num_layers": 24,
+        "attention_type": "MHA"
+    }
+
+def gpt3_xl_config():
+    """GPT-3 XL (1.3B) configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 2048,
+        "num_heads": 32,
+        "ffn_dim": 8192,  # 4 * embedding_dim
+        "num_layers": 24,
+        "attention_type": "MHA"
+    }
+
+def gpt3_2_7b_config():
+    """GPT-3 2.7B configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 2560,
+        "num_heads": 32,
+        "ffn_dim": 10240,  # 4 * embedding_dim
+        "num_layers": 32,
+        "attention_type": "MHA"
+    }
+
+def gpt3_6_7b_config():
+    """GPT-3 6.7B configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 4096,
+        "num_heads": 40,
+        "ffn_dim": 16384,  # 4 * embedding_dim
+        "num_layers": 32,
+        "attention_type": "MHA"
+    }
+
+def gpt3_13b_config():
+    """GPT-3 13B configuration."""
+    return {
+        "vocab_size": 50257,
+        "seq_length": 2048,
+        "embedding_dim": 5120,
+        "num_heads": 40,
+        "ffn_dim": 20480,  # 4 * embedding_dim
+        "num_layers": 40,
+        "attention_type": "MHA"
+    }
+
 def gpt3_config():
-    """GPT-3 (175B) configuration."""
+    """GPT-3 (175B) configuration. Renamed from original gpt3_config."""
     return {
         "vocab_size": 50257,
         "seq_length": 2048,
         "embedding_dim": 12288,
         "num_heads": 96,
-        "ffn_dim": 49152,
+        "ffn_dim": 49152, # 4 * embedding_dim
         "num_layers": 96,
         "attention_type": "MHA"
     }
@@ -367,7 +451,14 @@ def all_configs():
         "GPT-2-Medium": gpt2_medium_config(),
         "GPT-2-Large": gpt2_large_config(),
         "GPT-2-XL": gpt2_xl_config(),
-        "GPT-3": gpt3_config(),
+        "GPT-3-Small": gpt3_small_config(),
+        "GPT-3-Medium": gpt3_medium_config(),
+        "GPT-3-Large": gpt3_large_config(),
+        "GPT-3-XL": gpt3_xl_config(),
+        "GPT-3-2.7B": gpt3_2_7b_config(),
+        "GPT-3-6.7B": gpt3_6_7b_config(),
+        "GPT-3-13B": gpt3_13b_config(),
+        "GPT-3-175B": gpt3_config(),
         "GPT-4 (est)": gpt4_estimate_config(),
         "LLaMA-2-7B": llama2_7b_config(),
         "LLaMA-2-13B": llama2_13b_config(),
